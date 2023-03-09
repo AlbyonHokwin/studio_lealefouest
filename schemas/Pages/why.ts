@@ -1,5 +1,5 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
-import type { ArrayRule, PortableTextTextBlock, PortableTextSpan } from "sanity";
+import type { PortableTextTextBlock, PortableTextSpan } from "sanity";
 
 export default defineType({
     name: 'why',
@@ -14,22 +14,13 @@ export default defineType({
         defineField({ name: 'headTitle', type: 'string', title: 'Titre de la page' }),
 
         defineField({
-            name: 'shockPhrase', type: 'array', title: 'Phrase choc',
-            of: [defineArrayMember({
-                type: 'block',
-                styles: [],
-                lists: [],
-                marks: {
-                    decorators: [{ title: 'Emphasis', value: 'em' }],
-                    annotations: []
-                }
-            })],
-            validation: (Rule: ArrayRule<PortableTextTextBlock[]>) => Rule.required().custom((blocks) => {
-                if (!blocks || !blocks[0]) return true;
-
-                if (blocks.length > 1) return 'Ne pas utiliser de retour à la ligne';
-
-                const children = blocks[0].children as PortableTextSpan[];
+            name: 'shockPhrase', type: 'textWithEmphasis', title: 'Phrase choc',
+            validation: Rule => Rule.required().custom(({ text }: {text: PortableTextTextBlock[]}) => {
+                if (!text || !text[0]) return true;
+                
+                if (text.length > 1) return 'Ne pas utiliser de retour à la ligne';
+                
+                const children = text[0].children as PortableTextSpan[];
                 const numberOfEmphasis: number = children.reduce((a, c) => {
                     if (!c.marks) return a;
                     return c.marks.includes('em') ? a + 1 : a;
