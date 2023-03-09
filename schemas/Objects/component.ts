@@ -16,6 +16,15 @@ export default defineType({
             validation: Rule => Rule.required()
         })
     ],
+    orderings: [
+        {
+            title: 'Page number',
+            name: 'pageNumberAsc',
+            by: [
+                { field: 'page', direction: 'asc' }
+            ]
+        },
+    ],
     preview: {
         select: {
             name: 'name',
