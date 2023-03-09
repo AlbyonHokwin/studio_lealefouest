@@ -50,17 +50,5 @@ export default defineType({
             })],
             validation: Rule => Rule.max(5),
         })
-    ],
-    preview: {
-        select: {
-            name: 'component.name',
-            page: 'component.page'
-        },
-        prepare(selection) {
-            const { name, page } = selection;
-            return {
-                title: `${name} / Page n°${page}`
-            }
-        }
-    }
+    ]
 })

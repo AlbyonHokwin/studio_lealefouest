@@ -35,17 +35,5 @@ export default defineType({
             to: [{ type: 'accessibleImage' }],
             validation: Rule => Rule.required(),
         })
-    ],
-    preview: {
-        select: {
-            name: 'component.name',
-            page: 'component.page'
-        },
-        prepare(selection) {
-            const { name, page } = selection;
-            return {
-                title: `${name} / Page n°${page}`
-            }
-        }
-    }
+    ]
 })
