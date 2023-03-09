@@ -1,7 +1,7 @@
 import { defineConfig } from 'sanity'
 import { deskTool, StructureBuilder } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
-import { schemaTypes, singletonSchemas, singletonTypes } from './schemas'
+import { schemaTypes, singletonSchemas, singletonTypes, normalSchemas } from './schemas'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -46,10 +46,7 @@ export default defineConfig({
                 ),
 
               // Regular document types
-              S.documentTypeListItem("profile").title("Profil"),
-              S.documentTypeListItem("component").title("Composant"),
-              S.documentTypeListItem("accessibleImage").title("Image"),
-              S.documentTypeListItem("icon").title("Icône"),
+              ...normalSchemas.map(schema => S.documentTypeListItem(schema.typeName).title(schema.title)),
             ])
             .showIcons(false),
       }
