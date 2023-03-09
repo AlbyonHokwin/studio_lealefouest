@@ -1,4 +1,5 @@
-import { defineType, defineField, defineArrayMember, ArrayRule, PortableTextTextBlock, PortableTextSpan } from "sanity";
+import { defineType, defineField, defineArrayMember } from "sanity";
+import type { ArrayRule, PortableTextTextBlock, PortableTextSpan } from "sanity";
 
 export default defineType({
     name: 'why',
