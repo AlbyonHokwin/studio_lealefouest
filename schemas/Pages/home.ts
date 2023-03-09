@@ -11,8 +11,6 @@ export default defineType({
             to: [{ type: 'component' }],
         }),
 
-        defineField({ name: 'headTitle', type: 'string', title: 'Titre de la page' }),
-
         defineField({
             name: 'introductory', type: 'array', title: 'Phrase d\'accueil',
             of: [defineArrayMember({
