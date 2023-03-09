@@ -4,12 +4,14 @@ import type { ArrayRule, PortableTextTextBlock, PortableTextSpan } from "sanity"
 export default defineType({
     name: 'home',
     type: 'document',
-    title: 'Page d\'accueil',
+    title: 'Accueil',
     fields: [
         defineField({
             name: 'component', type: 'reference', title: 'Composant associé',
             to: [{ type: 'component' }],
         }),
+
+        defineField({ name: 'headTitle', type: 'string', title: 'Titre de la page' }),
 
         defineField({
             name: 'introductory', type: 'array', title: 'Phrase d\'accueil',

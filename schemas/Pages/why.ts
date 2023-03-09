@@ -4,12 +4,14 @@ import type { ArrayRule, PortableTextTextBlock, PortableTextSpan } from "sanity"
 export default defineType({
     name: 'why',
     type: 'document',
-    title: 'Pourquoi ?',
+    title: 'Pourquoi',
     fields: [
         defineField({
             name: 'component', type: 'reference', title: 'Composant associé',
             to: [{ type: 'component' }],
         }),
+
+        defineField({ name: 'headTitle', type: 'string', title: 'Titre de la page' }),
 
         defineField({
             name: 'shockPhrase', type: 'array', title: 'Phrase choc',
