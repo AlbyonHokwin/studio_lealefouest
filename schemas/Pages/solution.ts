@@ -19,7 +19,7 @@ export default defineType({
 
         defineField({
             name: 'solutions', type: 'array', title: 'Solutions',
-            of: [{ type: 'string' }],
+            of: [defineArrayMember({ type: 'string' })],
             validation: Rule => Rule.max(5)
         }),
 
@@ -30,7 +30,7 @@ export default defineType({
 
         defineField({
             name: 'bonuses', type: 'array', title: 'Bonus',
-            of: [{ type: 'textWithStrong' }],
+            of: [defineArrayMember({ type: 'textWithStrong' })],
             validation: Rule => Rule.max(3)
         }),
     ]
