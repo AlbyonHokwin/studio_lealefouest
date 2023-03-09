@@ -51,9 +51,13 @@ export default defineType({
                 title: 'Cause',
                 fields: [
                     defineField({ name: 'name', type: 'string', title: 'Nom' }),
-                    defineField({ name: 'icon', type: 'icon', title: 'Icône' })
+                    defineField({
+                        name: 'icon', type: 'reference', title: 'Icône',
+                        to: [{ type: 'icon' }]
+                    })
                 ]
-            })]
+            })],
+            validation: Rule => Rule.max(5),
         })
     ],
     preview: {
