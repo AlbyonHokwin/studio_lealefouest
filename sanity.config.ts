@@ -16,13 +16,11 @@ const singletonListItem = (
     .id(typeName)
     .child(S.document().schemaType(typeName).documentId(typeName))
 
-
 export default defineConfig({
   name: 'default',
   title: 'website Lea Le Fouest',
-
-  projectId: 'vnzj5fe1',
-  dataset: 'production',
+  projectId: process.env.SANITY_STUDIO_API_PROJECT_ID || '',
+  dataset: process.env.SANITY_STUDIO_API_DATASET || '',
 
   plugins: [
     deskTool(
