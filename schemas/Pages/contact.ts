@@ -1,5 +1,4 @@
 import { defineType, defineField } from "sanity";
-import type { PortableTextTextBlock, PortableTextSpan } from "sanity";
 
 export default defineType({
     name: 'contact',
@@ -9,6 +8,14 @@ export default defineType({
         defineField({
             name: 'component', type: 'reference', title: 'Composant associé',
             to: [{ type: 'component' }],
+            hidden: ({ currentUser }) => {
+                if (!currentUser) return true;
+                return !(currentUser.roles.find(({ name }) => name === 'administrator'));
+            },
+            readOnly: ({ currentUser }) => {
+                if (!currentUser) return true;
+                return !(currentUser.roles.find(({ name }) => name === 'administrator'));
+            }
         }),
 
         defineField({

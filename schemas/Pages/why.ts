@@ -9,6 +9,14 @@ export default defineType({
         defineField({
             name: 'component', type: 'reference', title: 'Composant associé',
             to: [{ type: 'component' }],
+            hidden: ({ currentUser }) => {
+                if (!currentUser) return true;
+                return !(currentUser.roles.find(({ name }) => name === 'administrator'));
+            },
+            readOnly: ({ currentUser }) => {
+                if (!currentUser) return true;
+                return !(currentUser.roles.find(({ name }) => name === 'administrator'));
+            }
         }),
 
         defineField({ name: 'headTitle', type: 'string', title: 'Titre de la page' }),
