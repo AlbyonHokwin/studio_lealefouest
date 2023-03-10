@@ -7,7 +7,11 @@ export default defineType({
     fields: [
         defineField({
             name: 'name', type: 'string', title: 'Nom',
-            validation: Rule => Rule.required()
+            validation: Rule => Rule.required(),
+            readOnly: ({ currentUser }) => {
+                if (!currentUser) return true;
+                return !(currentUser.roles.find(({ name }) => name === 'administrator'));
+            }
         }),
 
         defineField({
