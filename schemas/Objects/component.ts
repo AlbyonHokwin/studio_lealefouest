@@ -8,6 +8,10 @@ export default defineType({
         defineField({
             name: 'name', type: 'string', title: 'Nom',
             validation: Rule => Rule.required(),
+            hidden: ({ currentUser }) => {
+                if (!currentUser) return true;
+                return !(currentUser.roles.find(({ name }) => name === 'administrator'));
+            },
             readOnly: ({ currentUser }) => {
                 if (!currentUser) return true;
                 return !(currentUser.roles.find(({ name }) => name === 'administrator'));
