@@ -5,11 +5,15 @@ export default defineType({
     type: 'object',
     title: 'Média',
     fields: [
+        defineField({ name: 'name', type: 'string', title: 'Nom' }),
+
+        defineField({ name: 'mainUrl', type: 'url', title: 'Lien principal'}),
+
         defineField({ name: 'text', type: 'string', title: 'Texte' }),
 
         defineField({
             name: 'image', type: 'reference', title: 'Image',
-            to: [{ type: 'image' }]
+            to: [{ type: 'accessibleImage' }]
         }),
 
         defineField({
