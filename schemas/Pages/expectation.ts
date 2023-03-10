@@ -15,7 +15,6 @@ export default defineType({
         defineField({
             name: 'expectations', type: 'array', title: 'Attentes',
             of: [defineArrayMember({
-                name: 'expectationItem',
                 type: 'object',
                 title: 'Attente',
                 fields: [
