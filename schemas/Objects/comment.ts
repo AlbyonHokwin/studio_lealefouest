@@ -7,6 +7,11 @@ export default defineType({
     fields: [
         defineField({ name: 'author', type: 'string', title: 'Auteur' }),
 
-        defineField({ name: 'text', type: 'text', title: 'Texte' })
+        defineField({ name: 'text', type: 'text', title: 'Texte' }),
+
+        defineField({
+            name: 'quoteIcon', type: 'reference', title: 'Icône de guillements',
+            to: [{ type: 'icon' }]
+        }),
     ]
 })
