@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineType, defineField, defineArrayMember } from "sanity";
 
 export default defineType({
     name: 'contact',
@@ -27,6 +27,11 @@ export default defineType({
         defineField({
             name: 'buttonText', type: 'string', title: 'Texte bouton',
             validation: Rule => Rule.required(),
-        })
+        }),
+
+        defineField({
+            name: 'comments', type: 'array', title: 'Commentaires',
+            of: [defineArrayMember({ type: 'reference', to: [{ type: 'comment' }] })]
+        }),
     ],
 })
