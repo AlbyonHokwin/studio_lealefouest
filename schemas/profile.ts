@@ -12,10 +12,5 @@ export default defineType({
         defineField({ name: 'email', type: 'string', title: 'Adresse e-mail' }),
 
         defineField({ name: 'phone', type: 'string', title: 'Numéro de téléphone' }),
-
-        defineField({
-            name: 'picture', type: 'reference', title: 'Image de profil',
-            to: [{ type: 'accessibleImage' }]
-        }),
     ]
 })
