@@ -16,6 +16,8 @@ export default defineType({
             to: [{ type: 'accessibleImage' }]
         }),
 
+        defineField({name: 'contained', type: 'boolean', title: 'Image contenue entièrement ?'}),
+
         defineField({
             name: 'useArrow', type: 'boolean', title: 'Utiliser flèche',
             initialValue: true
@@ -33,7 +35,7 @@ export default defineType({
                         name: 'icon', type: 'reference', title: 'Icône',
                         to: [{ type: 'icon' }]
                     }),
-                    defineField({ name: 'url', type: 'url', title: 'Lien' })
+                    defineField({ name: 'url', type: 'url', title: 'Lien' }),
                 ]
             })]
         })
