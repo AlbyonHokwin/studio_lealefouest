@@ -20,11 +20,5 @@ export default defineType({
                 Rule.required(),
             ],
         }),
-
-        defineField({
-            name: 'need', type: 'boolean', title: 'Besoin ?',
-            description: 'A activer si l\'icône sera utilisée seule',
-            initialValue: false
-        }),
     ]
 })
