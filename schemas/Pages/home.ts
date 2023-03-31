@@ -21,7 +21,7 @@ export default defineType({
 
         defineField({
             name: 'introductory', type: 'textWithEmphasis', title: 'Phrase d\'accueil',
-            validation: Rule => Rule.required().custom(({ text }: {text: PortableTextTextBlock[]}) => {
+            validation: Rule => Rule.required().custom(({ text }: { text: PortableTextTextBlock[] }) => {
                 if (!text || !text[0]) return true;
 
                 const children = text[0].children as PortableTextSpan[];
@@ -41,6 +41,11 @@ export default defineType({
         defineField({
             name: 'picture', type: 'reference', title: 'Image',
             to: [{ type: 'accessibleImage' }],
+            validation: Rule => Rule.required(),
+        }),
+
+        defineField({
+            name: 'buttonLabel', type: 'string', title: 'Nom du bouton',
             validation: Rule => Rule.required(),
         })
     ]
